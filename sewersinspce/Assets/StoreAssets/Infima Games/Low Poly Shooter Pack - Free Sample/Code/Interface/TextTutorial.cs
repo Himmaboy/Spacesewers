@@ -29,8 +29,10 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             //Base.
             base.Awake();
 
-            //disable the prompt by default.
+            //Enable the prompt by default.
+            prompt.enabled = true;
             //Disable the tutorial by default.
+            tutorial.enabled = false;
         }
 
         #endregion
@@ -42,7 +44,9 @@ namespace InfimaGames.LowPolyShooterPack.Interface
             //Get whether we should be showing the tutorial text, or not.
             bool isVisible = playerCharacter.IsTutorialTextVisible();
             //Hide the prompt if the tutorial is visible.
-            //Hide the tutorial if needed.
+            prompt.enabled = !isVisible;
+            //Show the tutorial if needed.
+            tutorial.enabled = isVisible;
         }
 
         #endregion
